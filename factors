@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 """
 This Module is To :
@@ -23,6 +24,7 @@ def main(filename):
     with open(filename, 'r') as file:
         numbers = file.read().splitlines()
     for num in numbers:
+        num = int(num)
         factor = factorize(num)
         if factor:
             p, q = factor

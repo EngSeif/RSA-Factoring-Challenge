@@ -1,0 +1,41 @@
+import sys
+"""
+This Module is To :
+    Factorize as many numbers as possible
+    into a product of two smaller numbers.
+"""
+def factorize(num):
+    """ 
+    This Function is To:
+    - Find the Factorization of a Number
+    """
+    for i in range(2, num):
+        if num % i == 0:
+            return i, num // i
+    return None
+
+def main(filename):
+    """
+    Main Function
+    - Reads <file> From Command Line and
+    Passes it to <factorize> function
+    """
+    with open(filename, 'r') as file:
+        numbers = file.read().splitlines()
+    for num in numbers:
+        factor = factorize(num)
+        if factor:
+            p, q = factor
+            print("{}={}*{}".format(num, p, q))
+
+if __name__ == "__main__":
+
+    # Make Sure That the User Only Enters One File
+
+    if len(sys.argv) != 2:
+        print("Usage: factors <file>")
+        sys.exit(1)
+
+    # Get FileName and Pass it To <main> Function
+    filename = sys.argv[1]
+    main(filename)

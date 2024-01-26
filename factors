@@ -1,12 +1,16 @@
 #!/usr/bin/python3
-import sys
 """
 This Module is To :
     Factorize as many numbers as possible
     into a product of two smaller numbers.
 """
+
+
+import sys
+
+
 def factorize(num):
-    """ 
+    """
     This Function is To:
     - Find the Factorization of a Number
     """
@@ -14,6 +18,25 @@ def factorize(num):
         if num % i == 0:
             return i, num // i
     return None
+
+
+def is_prime(num):
+    """
+    Check if a number is prime.
+
+    Args:
+    - num (int): The number to be checked.
+
+    Returns:
+    - bool: True if the number is prime, False otherwise.
+    """
+    if num < 2:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
 
 def main(filename):
     """
@@ -25,10 +48,14 @@ def main(filename):
         numbers = file.read().splitlines()
     for num in numbers:
         num = int(num)
-        factor = factorize(num)
-        if factor:
-            p, q = factor
-            print("{}={}*{}".format(num, p, q))
+        if is_prime(num):
+            print("{}={}*{}".format(num, num, 1))
+        else:
+            factor = factorize(num)
+            if factor:
+                p, q = factor
+                print("{}={}*{}".format(num, p, q))
+
 
 if __name__ == "__main__":
 

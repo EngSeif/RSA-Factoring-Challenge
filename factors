@@ -26,14 +26,19 @@ def main(filename):
     - Reads <file> From Command Line and
     Passes it to <factorize> function
     """
-    with open(filename, 'r') as file:
-        numbers = file.read().splitlines()
-    for num in numbers:
-        num = int(num)
-        factor = factorize(num)
-        if factor:
-            p, q = factor
-            print("{}={}*{}".format(num, q, p))
+    try:
+        with open(filename, 'r') as file:
+            numbers = file.read().splitlines()
+        for num in numbers:
+            num = int(num)
+            factor = factorize(num)
+            if factor:
+                p, q = factor
+                print("{}={}*{}".format(num, q, p))
+    except ValueError:
+        print("Error: non-integer values.")
+    except FileNotFoundError:
+        print("Error: Invalid file")
 
 
 if __name__ == "__main__":

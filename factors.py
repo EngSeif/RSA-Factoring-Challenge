@@ -7,6 +7,7 @@ This Module is To :
 
 
 import sys
+import time
 
 
 def factorize(num):
@@ -51,4 +52,9 @@ if __name__ == "__main__":
 
     # Get FileName and Pass it To <main> Function
     filename = sys.argv[1]
+    start_time = time.time()
     main(filename)
+    elapsed_time = time.time() - start_time
+    if elapsed_time > 5:
+        print("Timeout: Process exceeded 5 seconds.")
+        sys.exit(1)

@@ -14,10 +14,20 @@ def factorize(num):
     This Function is To:
     - Find the Factorization of a Number
     """
-    for i in range(2, num):
-        if num % i == 0:
-            return i, num // i
-    return None
+    if (num % 2 == 0):
+        print("{}={}*{}".format(num, num/2, 2))
+        return
+    f = 3
+    while(f * f <= num):
+        if num %f == 0:
+            print("{}={}*{}".format(num, num/2, 2))
+            return
+        else:
+            f += 2
+    print("{}={}*{}".format(num, num, 1))
+    return
+
+
 
 
 def main(filename):
@@ -32,9 +42,6 @@ def main(filename):
         for num in numbers:
             num = int(num)
             factor = factorize(num)
-            if factor:
-                p, q = factor
-                print("{}={}*{}".format(num, q, p))
     except ValueError:
         print("Error: non-integer values.")
     except FileNotFoundError:
